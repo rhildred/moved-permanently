@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+  hello:
+    build:
+      context: app
+      cache_from:
+      - node:7-alpine
+    ports:
+    - ${RHPORT}:1337
+    volumes:
+    - ./tmp/:/tmp/
+    entrypoint: node /opt/hello.js ${NEWURL}
