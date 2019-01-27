@@ -6,6 +6,7 @@ services:
       context: app
       cache_from:
       - node:7-alpine
+    restart: always
     ports:
     - ${RHPORT}:1337
     volumes:
