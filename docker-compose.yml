@@ -2,13 +2,14 @@ version: '3.2'
 
 services:
   hello:
+    network_mode: "host"
     build:
       context: app
       cache_from:
       - node:7-alpine
     restart: always
     ports:
-    - ${RHPORT}:1337
+    - ${RHPORT}:${RHPORT}
     volumes:
     - ./tmp/:/tmp/
-    entrypoint: node /opt/hello.js ${NEWURL}
+    entrypoint: node /opt/hello.js ${NEWURL} ${RHPORT}
